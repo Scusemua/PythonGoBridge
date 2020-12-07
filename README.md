@@ -1,0 +1,1 @@
+Library to enable Go code to interface with Python API, specifically for Pocket.
