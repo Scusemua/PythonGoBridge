@@ -20,6 +20,8 @@ extern "C" {
 
     void pocket_DestroyPocketDispatcher(void* PocketDispatcher);
 
+    void pocket_HelloWorld();
+
 #ifdef __cplusplus
 }
 #endif
