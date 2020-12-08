@@ -24,7 +24,7 @@
 #ifndef FILE_INFO_H
 #define FILE_INFO_H
 
-#include "common/serializable.h"
+#include "../common/serializable.h"
 
 class FileInfo : public Serializable {
 public:

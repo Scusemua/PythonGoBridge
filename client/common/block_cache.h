@@ -24,7 +24,7 @@
 #ifndef BLOCK_CACHE_H
 #define BLOCK_CACHE_H
 
-#include "metadata/block_info.h"
+#include "../metadata/block_info.h"
 #include <unordered_map>
 
 using namespace std;

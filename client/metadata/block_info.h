@@ -24,8 +24,8 @@
 #ifndef BLOCK_INFO_H
 #define BLOCK_INFO_H
 
-#include "common/byte_buffer.h"
-#include "common/serializable.h"
+#include "../common/byte_buffer.h"
+#include "../common/serializable.h"
 #include "datanode_info.h"
 
 class BlockInfo : public Serializable {

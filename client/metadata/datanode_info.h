@@ -24,8 +24,8 @@
 #ifndef DATANODE_INFO_H
 #define DATANODE_INFO_H
 
-#include "common/byte_buffer.h"
-#include "common/serializable.h"
+#include "../common/byte_buffer.h"
+#include "../common/serializable.h"
 
 using namespace crail;
 
