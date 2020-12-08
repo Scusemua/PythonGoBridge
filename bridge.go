@@ -44,6 +44,10 @@ type PocketDispatcher struct {
 	ptr unsafe.Pointer 
 }
 
+func HelloWorld() {
+	C.pocket_HelloWorld();
+}
+
 func NewPocketDispatcher() PocketDispatcher {
 	var pocketDispatcher PocketDispatcher
 	pocketDispatcher.ptr = C.pocket_NewPocketDispatcher()

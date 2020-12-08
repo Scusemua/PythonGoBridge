@@ -16,6 +16,10 @@ void* pocket_NewPocketDispatcher() {
     return dispatcher;
 }
 
+void pocket_HelloWorld() {
+    std::cout << "Hello, world!" << std::endl;
+}
+
 int pocket_Initialize(void* pocketDispatcher, char* address, int pocket_port) {
     std::cout << "[C++ Bridge] pocket_Initialize" << std::endl;
     return AsPocketDispatcher(pocketDispatcher)->Initialize(string(address), pocket_port);
