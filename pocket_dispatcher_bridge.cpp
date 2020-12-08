@@ -40,7 +40,7 @@ int pocket_Enumerate(void* pocketDispatcher, char* name) {
     return AsPocketDispatcher(pocketDispatcher)->Enumerate(string(name));
 }
 
-int pocket_PutFile(void* pocketDispatcher, char* local_file, char* dst_file, bool enumerable) {
+int pocket_PutFile(void* pocketDispatcher, char* local_file, char* dst_file, int enumerable) {
     std::cout << "[C++ Bridge] pocket_PutFile" << std::endl;
     return AsPocketDispatcher(pocketDispatcher)->PutFile(string(local_file), string(dst_file), enumerable);
 }
@@ -50,7 +50,7 @@ int pocket_GetFile(void* pocketDispatcher, char* src_file, char* local_file) {
     return AsPocketDispatcher(pocketDispatcher)->GetFile(string(src_file), string(local_file));
 }
 
-int pocket_PutBuffer(void* pocketDispatcher, const char buf[], int pocket_len, char* dst_file, bool enumerable) {
+int pocket_PutBuffer(void* pocketDispatcher, const char buf[], int pocket_len, char* dst_file, int enumerable) {
     std::cout << "[C++ Bridge] pocket_PutBuffer" << std::endl;
     return AsPocketDispatcher(pocketDispatcher)->PutBuffer(buf, pocket_len, string(dst_file), enumerable);
 }

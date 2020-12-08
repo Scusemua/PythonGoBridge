@@ -10,9 +10,9 @@ extern "C" {
     int pocket_MakeDir(void* PocketDispatcher, char* name);
     int pocket_Lookup(void* PocketDispatcher, char* name);
     int pocket_Enumerate(void* PocketDispatcher, char* name);
-    int pocket_PutFile(void* PocketDispatcher, char* local_file, char* dst_file, bool enumerable);
+    int pocket_PutFile(void* PocketDispatcher, char* local_file, char* dst_file, int enumerable);
     int pocket_GetFile(void* PocketDispatcher, char* src_file, char* local_file);
-    int pocket_PutBuffer(void* PocketDispatcher, const char buf[], int pocket_len, char* dst_file, bool enumerable);
+    int pocket_PutBuffer(void* PocketDispatcher, const char buf[], int pocket_len, char* dst_file, int enumerable);
     int pocket_GetBuffer(void* PocketDispatcher, char buf[], int pocket_len, char* src_file);
     int pocket_DeleteFile(void* PocketDispatcher, char* file);
     int pocket_DeleteDir(void* PocketDispatcher, char* directory);
