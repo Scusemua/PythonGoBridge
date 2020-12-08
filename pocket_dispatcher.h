@@ -26,7 +26,7 @@
 
 #include <string>
 
-#include "client/crail_store.h"
+#include "crail_store.h"
 
 using namespace std;
 
