@@ -1,3 +1,5 @@
+// C header file for C++ implenetation of bridge.
+
 #ifdef __cplusplus
 extern "C" {
 #endif
