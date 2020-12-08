@@ -114,20 +114,100 @@ func (pocket PocketDispatcher) MakeDir(src_filename string) int {
 	return int(_res)
 }
 
-func Lookup(name string) int {
+// Send a LOOKUP metadata request to Pocket to see if file exists
+//
+// :param pocket:           	pocketHandle returned from connect()
+// :param str src_filename: 	name of file/key in Pocket from which looking up
+// :param str jobid:        	id unique to this job, used to separate keyspace for job
+// :return: 					the Pocket dispatcher response 
+func (pocket PocketDispatcher) Lookup(src_filename string, jobid string) int {
+	if jobid != "" {
+		jobid = "/" + jobid
+	}
 
+	get_filename := jobid + "/" + src_filename
+	get_file := C.CString(get_filename)
+	defer C.free(unsafe.Pointer(get_file))
+
+	_res = C.pocket_Lookup(pocket.ptr, get_file)
+	res = int(_res)
+
+	if res != 0 {
+		fmt.Printf("[ERROR] Lookup failed!\n")
+	}
+
+	return res 
 }
 
-func Enumerate(name string) int {
-
+func (pocket PocketDispatcher) Enumerate(name string) int {
+	fmt.Printf("[ERROR] Enumerate has not been implemented.\n")
+	return -1 
 }
 
-func PutFile(local_file string, dst_file string, enumerable bool) int {
+// Send a PUT request to Pocket to write key
+// :param pocket:           	pocketHandle returned from connect()
+// :param str src_filename: 	name of local file containing data to PUT
+// :param str dst_filename: 	name of file/key in Pocket which writing to
+// :param str jobid:        	id unique to this job, used to separate keyspace for job
+// :param PERSIST_AFTER_JOB:	optional hint, if True, data written to table persisted after job done
+// :return: the Pocket dispatcher response 
+func (pocket PocketDispatcher) Put(src_filename string, dst_filename string, jobid string, persistAfterJob bool) int {
+	if jobid != "" {
+		jobid = "/" + jobid
+	}
 
-} 
+	var set_filename string 
+	if persistAfterJob {
+		set_filename = jobid + "-persist/" + dst_filename
+	} else {
+		set_filename = jobid + "/" + dst_filename
+	}
 
-func GetFile(src_file string, local_file string) int {
+	dst_file := C.CString(set_filename)
+	defer C.free(unsafe.Pointer(set_filename))
+	
+	local_file := C.CString(src_filename)
+	defer C.free(unsafe.Pointer(local_file))
 
+	// int pocket_PutFile(void* pocketDispatcher, char* local_file, char* dst_file, bool enumerable)
+	_res = C.pocket_PutFile(pocket.ptr, local_file, dst_file, false)
+	return int(_res)
+}
+
+// Send a GET request to Pocket to read key
+//
+// :param pocket:           	pocketHandle returned from connect()
+// :param str src_filename: 	name of file/key in Pocket from which reading
+// :param str dst_filename: 	name of local file where want to store data from GET
+// :param str jobid:        	id unique to this job, used to separate keyspace for job
+// :param DELETE_AFTER_READ:	optional hint, if True, data deleted after job done
+// :return: the Pocket dispatcher response 
+func (pocket PocketDispatcher) Get(src_filename string, dst_filename string, jobid string, deleteAfterRead bool) int {
+	if jobid != "" {
+		jobid = "/" + jobid
+	}
+
+	get_filename := jobid + "/" + src_filename
+	get_file := C.CString(get_filename)
+	defer C.free(unsafe.Pointer(get_file))
+
+	dst_file := C.CString(dst_filename)
+	defer C.free(unsafe.Pointer(dst_file))
+
+	_res = C.pocket_GetFile(pocket.ptr, get_file, dst_file)
+	res = int(_res)
+
+	if res != 0 {
+		fmt.Printf("[ERROR] GET failed!")
+		return res 
+	}
+
+	if deleteAfterRead {
+		_res = pocket.Delete(src_filename, jobid)
+		res = int(_res)
+	}
+
+	return res 
 }
 
 // Send a DEL request to Pocket to delete key
@@ -160,11 +240,40 @@ func (pocket PocketDispatcher) DeleteDir(file string) int {
 }
 
 func (pocket PocketDispatcher) CountFiles(directory string) int {
+	directoryString := C.CString(directory)
+	defer C.free(unsafe.Pointer(directory))
 
+	// int pocket_CountFiles(void* pocketDispatcher, char* directory)
+	_res = C.pocket_CountFiles(pocket.ptr, directoryString)
+	return int(_res)
 }
 
-func (pocket PocketDispatcher) PutBuffer(data []byte, len int, dst_file string, enumerable bool) int {
+// Send a PUT request to Pocket to write key
+//
+// :param pocket:           	pocketHandle returned from connect()
+// :param str src: 	   			name of local object containing data to PUT
+// :param str dst_filename: 	name of file/key in Pocket which writing to
+// :param str jobid:        	id unique to this job, used to separate keyspace for job
+// :param PERSIST_AFTER_JOB:	optional hint, if True, data written to table persisted after job done
+// :return: the Pocket dispatcher response 
+func (pocket PocketDispatcher) PutBuffer(data []byte, len int, dst_filename string, jobid int, persistAfterJob bool) int {
+	if jobid != "" {
+		jobid = "/" + jobid
+	}
 
+	var set_filename string 
+	if persistAfterJob {
+		set_filename = jobid + "-persist/" + dst_filename
+	} else {
+		set_filename = jobid + "/" + dst_filename
+	}
+
+	dst_file := C.CString(set_filename)
+	defer C.free(unsafe.Pointer(set_filename))
+
+	// int pocket_PutBuffer(void* pocketDispatcher, const char buf[], int pocket_len, char* dst_file, bool enumerable)
+	_res = C.pocket_PutBuffer(pocket.ptr, (*C.char)(unsafe.Pointer(&dst[0])), C.int(len), set_filename, false)
+	return _res 
 }
 
 // Send a GET request to Pocket to read key
