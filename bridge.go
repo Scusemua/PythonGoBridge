@@ -1,14 +1,14 @@
 package bridge 
 
-// #cgo LDFLAGS: libpocket.a
-// #include "pocket_dispatcher_bridge.h"
-import (
-	"C"
-	"fmt"
-	"os/exec"
-	//"net"
-	"unsafe"
-)
+/*
+#cgo LDFLAGS: -L. -lpocketlibrary
+#include "pocket_dispatcher_bridge.h"
+#include <stdlib.h>
+*/
+import "C"
+import "fmt"
+import "os/exec"
+import "unsafe"
 
 var PORT = 2345
 var HOSTNAME = "localhost"
