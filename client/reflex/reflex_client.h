@@ -37,8 +37,8 @@
 #include <unistd.h>
 #include <unordered_map>
 
-#include "common/byte_buffer.h"
-#include "common/serializable.h"
+#include "../common/byte_buffer.h"
+#include "../common/serializable.h"
 #include "reflex_checker.h"
 #include "reflex_future.h"
 #include "reflex_header.h"

@@ -26,8 +26,8 @@
 
 #include <memory>
 
-#include "metadata/block_info.h"
-#include "metadata/file_info.h"
+#include "../metadata/block_info.h"
+#include "../metadata/file_info.h"
 #include "namenode_response.h"
 #include "narpc/rpc_client.h"
 #include "narpc/rpc_message.h"

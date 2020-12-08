@@ -24,8 +24,8 @@
 #ifndef NAMENODE_RESPONSE_H
 #define NAMENODE_RESPONSE_H
 
-#include "common/byte_buffer.h"
-#include "common/serializable.h"
+#include "../common/byte_buffer.h"
+#include "../common/serializable.h"
 #include "narpc/rpc_checker.h"
 #include "narpc/rpc_client.h"
 #include "narpc/rpc_message.h"

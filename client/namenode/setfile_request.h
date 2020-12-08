@@ -27,10 +27,10 @@
 #include <memory>
 #include <string>
 
-#include "common/byte_buffer.h"
-#include "common/serializable.h"
-#include "metadata/file_info.h"
-#include "metadata/filename.h"
+#include "../common/byte_buffer.h"
+#include "../common/serializable.h"
+#include "../metadata/file_info.h"
+#include "../metadata/filename.h"
 #include "namenode_request.h"
 #include "narpc/rpc_message.h"
 

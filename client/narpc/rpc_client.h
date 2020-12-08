@@ -37,8 +37,8 @@
 #include <unistd.h>
 #include <unordered_map>
 
-#include "common/byte_buffer.h"
-#include "common/serializable.h"
+#include "../common/byte_buffer.h"
+#include "../common/serializable.h"
 #include "rpc_checker.h"
 #include "rpc_message.h"
 #include "rpc_response.h"

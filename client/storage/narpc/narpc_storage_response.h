@@ -24,9 +24,9 @@
 #ifndef NARPC_STORAGE_RESPONSE_H
 #define NARPC_STORAGE_RESPONSE_H
 
-#include "common/byte_buffer.h"
-#include "narpc/rpc_checker.h"
-#include "narpc/rpc_response.h"
+#include "../../common/byte_buffer.h"
+#include "../../narpc/rpc_checker.h"
+#include "../../narpc/rpc_response.h"
 
 using namespace crail;
 

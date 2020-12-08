@@ -24,7 +24,7 @@
 #ifndef RPC_RESPONSE_H
 #define RPC_RESPONSE_H
 
-#include "common/future.h"
+#include "../common/future.h"
 #include "rpc_checker.h"
 #include "rpc_message.h"
 

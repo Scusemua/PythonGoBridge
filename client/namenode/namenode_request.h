@@ -24,8 +24,8 @@
 #ifndef NAMENODE_REQUEST_H
 #define NAMENODE_REQUEST_H
 
-#include "common/byte_buffer.h"
-#include "common/serializable.h"
+#include "../common/byte_buffer.h"
+#include "../common/serializable.h"
 
 using namespace crail;
 

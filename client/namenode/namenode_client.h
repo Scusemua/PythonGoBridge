@@ -31,7 +31,7 @@
 #include "getblock_response.h"
 #include "ioctl_response.h"
 #include "lookup_response.h"
-#include "metadata/filename.h"
+#include "../metadata/filename.h"
 #include "narpc/rpc_client.h"
 #include "remove_response.h"
 #include "void_response.h"

@@ -24,8 +24,8 @@
 #ifndef NARPC_STORAGE_CLIENT_H
 #define NARPC_STORAGE_CLIENT_H
 
-#include "narpc/rpc_client.h"
-#include "storage/storage_client.h"
+#include "../../narpc/rpc_client.h"
+#include "../../storage/storage_client.h"
 
 class NarpcStorageClient : public RpcClient, public StorageClient {
 public:

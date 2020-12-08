@@ -24,9 +24,9 @@
 #ifndef IOCTL_REQUEST_H
 #define IOCTL_REQUEST_H
 
-#include "common/byte_buffer.h"
-#include "common/serializable.h"
-#include "metadata/filename.h"
+#include "../common/byte_buffer.h"
+#include "../common/serializable.h"
+#include "../metadata/filename.h"
 #include "namenode_request.h"
 #include "narpc/rpc_message.h"
 

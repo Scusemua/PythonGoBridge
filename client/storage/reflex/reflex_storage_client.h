@@ -24,8 +24,8 @@
 #ifndef REFLEX_STORAGE_CLIENT_H
 #define REFLEX_STORAGE_CLIENT_H
 
-#include "reflex/reflex_client.h"
-#include "storage/storage_client.h"
+#include "../../reflex/reflex_client.h"
+#include "../storage_client.h"
 
 class ReflexStorageClient : public ReflexClient, public StorageClient {
 public:

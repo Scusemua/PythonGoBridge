@@ -26,9 +26,9 @@
 
 #include <string>
 
-#include "common/byte_buffer.h"
-#include "common/crail_constants.h"
-#include "common/serializable.h"
+#include "../common/byte_buffer.h"
+#include "../common/crail_constants.h"
+#include "../common/serializable.h"
 
 using namespace std;
 using namespace crail;

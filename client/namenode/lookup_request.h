@@ -26,7 +26,7 @@
 
 #include <string>
 
-#include "metadata/filename.h"
+#include "../metadata/filename.h"
 #include "namenode_request.h"
 #include "narpc/rpc_message.h"
 

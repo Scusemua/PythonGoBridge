@@ -27,9 +27,9 @@
 #include <memory>
 #include <vector>
 
-#include "common/byte_buffer.h"
-#include "common/serializable.h"
-#include "narpc/rpc_client.h"
+#include "../../common/byte_buffer.h"
+#include "../../common/serializable.h"
+#include "../../narpc/rpc_client.h"
 #include "narpc_storage_request.h"
 
 class NarpcReadRequest : public NarpcStorageRequest {

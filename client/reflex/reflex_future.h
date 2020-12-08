@@ -24,8 +24,8 @@
 #ifndef REFLEX_FUTURE_H
 #define REFLEX_FUTURE_H
 
-#include "common/byte_buffer.h"
-#include "common/future.h"
+#include "../common/byte_buffer.h"
+#include "../common/future.h"
 #include "reflex_checker.h"
 #include <memory>
 
