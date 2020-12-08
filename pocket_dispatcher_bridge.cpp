@@ -6,8 +6,8 @@
 #include "pocket_dispatcher_bridge.h"
 #include "pocket_dispatcher.h"
 
-PocketDispatcher* return AsPocketDispatcher(void* pocketDispatcher) {
-    reinterpret_cast<PocketDispatcher*>(pocketDispatcher);
+PocketDispatcher* AsPocketDispatcher(void* pocketDispatcher) {
+    return reinterpret_cast<PocketDispatcher*>(pocketDispatcher);
 }
 
 void* pocket_NewPocketDispatcher() {
