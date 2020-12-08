@@ -26,9 +26,9 @@
 #include <iostream>
 #include <string.h>
 
-#include "crail_directory.h"
-#include "crail_file.h"
-#include "crail_outputstream.h"
+#include "client/crail_directory.h"
+#include "client/crail_file.h"
+#include "client/crail_outputstream.h"
 
 using namespace std;
 
