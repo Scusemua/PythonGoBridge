@@ -1,3 +1,5 @@
+// C++ implementation of C header file.
+
 #include <iostream>
 #include <string>
 
