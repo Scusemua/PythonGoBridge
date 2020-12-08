@@ -32,7 +32,7 @@
 #include "../metadata/file_info.h"
 #include "../metadata/filename.h"
 #include "namenode_request.h"
-#include "narpc/rpc_message.h"
+#include "../narpc/rpc_message.h"
 
 class SetfileRequest : public NamenodeRequest, public RpcMessage {
 public:

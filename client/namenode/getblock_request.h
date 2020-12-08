@@ -28,7 +28,7 @@
 
 #include "../common/byte_buffer.h"
 #include "namenode_request.h"
-#include "narpc/rpc_client.h"
+#include "../narpc/rpc_client.h"
 
 class GetblockRequest : public NamenodeRequest, public RpcMessage {
 public:

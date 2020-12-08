@@ -28,7 +28,7 @@
 
 #include "../metadata/filename.h"
 #include "namenode_request.h"
-#include "narpc/rpc_message.h"
+#include "../narpc/rpc_message.h"
 
 class RemoveRequest : public NamenodeRequest, public RpcMessage {
 public:

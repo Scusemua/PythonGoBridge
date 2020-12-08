@@ -26,10 +26,10 @@
 
 #include "../common/byte_buffer.h"
 #include "../common/serializable.h"
-#include "narpc/rpc_checker.h"
-#include "narpc/rpc_client.h"
-#include "narpc/rpc_message.h"
-#include "narpc/rpc_response.h"
+#include "../narpc/rpc_checker.h"
+#include "../narpc/rpc_client.h"
+#include "../narpc/rpc_message.h"
+#include "../narpc/rpc_response.h"
 
 class NamenodeResponse : public RpcResponse {
 public:
