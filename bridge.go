@@ -5,17 +5,18 @@ package bridge
 import (
 	"C"
 	"fmt"
-	"net"
+	"os/exec"
+	//"net"
 	"unsafe"
 )
 
-var PORT := 2345
-var HOSTNAME := "localhost"
+var PORT = 2345
+var HOSTNAME = "localhost"
 
-var CONTROLLER_IP := "10.1.47.178"
-var CONTROLLER_PORT := 4321
+var CONTROLLER_IP = "10.1.47.178"
+var CONTROLLER_PORT = 4321
 
-var MAX_DIR_DEPTH := 16
+var MAX_DIR_DEPTH = 16
 
 const INT = 4
 const LONG = 8
@@ -53,21 +54,41 @@ func (pocketDispatcher PocketDispatcher) Free() {
 	C.pocket_DestroyPocketDispatcher(pocketDispatcher.ptr)
 }
 
+// Call Pocket's python function directly to register the job.
 func RegisterJob(jobName string, numLambdas int, capacityGB int, peakMbps int, latencySensitive int) int {
 	// Call Pocket's register_job function.
 	// Return the job ID.
-	// tcpAddr, err := net.ResolveTCPAddr(fmt.Sprintf("%s:%d", CONTROLLER_IP, CONTROLLER_PORT))
-	// conn, err := net.DialTCP("tcp", nil, tcpAddr)
+	//tcpAddr, err := net.ResolveTCPAddr(fmt.Sprintf("%s:%d", CONTROLLER_IP, CONTROLLER_PORT))
+	//conn, err := net.DialTCP("tcp", nil, tcpAddr)
 
-	fmt.Printf("[WARNING] RegisterJob has not been implemented yet.")
-	return -1
+	// def register_job(jobname, num_lambdas=0, capacityGB=0, peakMbps=0, latency_sensitive=1)
+	python_command := fmt.Sprintf("import registration; print registration.register_job(%s, num_lambdas=%d, capacityGB=%d, peakMbps=%d, latency_sensitive=%d",
+									jobName, numLambdas, capacityGB, peakMbps, latency_sensitive)
+	cmd := exec.Command("python3", "-c", python_command)
+	fmt.Println(cmd.Args)
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		fmt.Println(err);
+	}
+
+	fmt.Println(string(out))
 }
 
+// Call Pocket's python function directly to deregister the job.
 func DeregisterJob(jobId int) int {
 	// Call Pocket's deregister_job.
 	// Return err.
-	fmt.Printf("[WARNING] DeregisterJob has not been implemented yet.")
-	return -1
+	
+	// def deregister_job(jobid)
+	python_command := fmt.Sprintf("import registration; print registration.deregister_job(%s)", jobName)
+	cmd := exec.Command("python3", "-c", python_command)
+	fmt.Println(cmd.Args)
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		fmt.Println(err);
+	}
+
+	fmt.Println(string(out))
 }
 
 func Connect(hostname string, port int) PocketDispatcher {
@@ -79,8 +100,9 @@ func Connect(hostname string, port int) PocketDispatcher {
 
 	res := int(res)
 
-	if res != 0:
+	if res != 0 {
 		fmt.Printf("[ERROR] Connecting to metadata server failed!")
+	}
 	
 	return pocketDispatcher
 }
