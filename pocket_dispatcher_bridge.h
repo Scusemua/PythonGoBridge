@@ -1,5 +1,8 @@
 // C header file for C++ implenetation of bridge.
 
+#ifndef POCKET_BRIDGE_DISPATCHER_H
+#define POCKET_BRIDGE_DISPATCHER_H
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,4 +27,6 @@ extern "C" {
 
 #ifdef __cplusplus
 }
+#endif
+
 #endif

@@ -1,9 +1,10 @@
 package bridge 
 
-// #cgo CFLAGS: -Wall -std=c++11
-// #cgo LDFLAGS: -L./libcppcrail libpocket.a -lstdc++11
+// #cgo CXXFLAGS: -std=c++14
+// #cgo LDFLAGS: pocketlibrary.a -lstdc++14
 // #include "pocket_dispatcher_bridge.h"
 // #include <stdlib.h>
+// #include <memory.h>
 import "C"
 import "fmt"
 import "os/exec"

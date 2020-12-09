@@ -25,6 +25,7 @@
 
 #include <iostream>
 #include <string.h>
+#include <memory.h>
 
 #include "client/crail_directory.h"
 #include "client/crail_file.h"
